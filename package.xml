@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<Package>
+    <DisplayName>aobPlayer</DisplayName>
+    <Description>Qt QML media player with filters</Description>
+    <Version>1.0</Version>
+    <ReleaseDate>2017</ReleaseDate>
+    <Name>com.drewdru.root.aobPlayer</Name>
+    <Virtual>false</Virtual>
+    <Licenses>
+        <License name="License Agreement" file="LICENSE" />
+    </Licenses>
+</Package>

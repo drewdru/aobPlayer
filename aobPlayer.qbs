@@ -28,14 +28,8 @@ Project {
         ]
 
         files: [
-            "controllers/backEndController/backend.cpp",
-            "controllers/backEndController/backend.h",
-            "controllers/myfilterController/myfilter.cpp",
-            "controllers/myfilterController/myfilter.h",
-            "controllers/testController/testcontroller.cpp",
-            "controllers/testController/testcontroller.h",
-            "controllers/videocontroller/videocontroller.cpp",
-            "controllers/videocontroller/videocontroller.h",
+            "controllers/videoFilters/BalanceYUV/balanceYUV.cpp",
+            "controllers/videoFilters/BalanceYUV/balanceYUV.h",
             "main.cpp",
             "qml.qrc",
         ]

@@ -2,5 +2,15 @@
     <qresource prefix="/">
         <file>qml/mainWindow/main.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>package.xml</file>
+        <file>qml/mainWindow/MainFrame.qml</file>
+        <file>qml/mainWindow/mainFrame.js</file>
+        <file>qml/components/ChannelBalanceSlider/ChannelBalanceSlider.qml</file>
+        <file>qml/components/ColorModelBalance/ColorModelBalance.qml</file>
+        <file>qml/components/ColorModelSelector/ColorModelSelector.qml</file>
+        <file>qml/drawers/FeatureListDrawer/FeatureListDrawer.qml</file>
+        <file>qml/drawers/ColorCorrectorDrawer/ColorCorrectorDrawer.qml</file>
+        <file>qml/views/AppMenu/AppMenu.qml</file>
+        <file>qml/views/ColorCorrector/ColorCorrector.qml</file>
     </qresource>
 </RCC>
