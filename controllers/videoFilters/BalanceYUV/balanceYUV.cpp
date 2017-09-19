@@ -61,7 +61,6 @@ void BalanceYUVRunnable::changeYUV(QVideoFrame *input)
     int lastV = input->mappedBytes();
 
     uchar* inputBits = input->bits();
-    qDebug() << firstU << " " << lastV;
     switch (this->filter_parent->currentMode) {
     case YUVColorsMode::Y:
         this->changeValue(inputBits, 0, firstU, 255,

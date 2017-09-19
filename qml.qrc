@@ -12,5 +12,7 @@
         <file>qml/drawers/ColorCorrectorDrawer/ColorCorrectorDrawer.qml</file>
         <file>qml/views/AppMenu/AppMenu.qml</file>
         <file>qml/views/ColorCorrector/ColorCorrector.qml</file>
+        <file>qml/mainWindow/Footer.qml</file>
+        <file>qml/mainWindow/Header.qml</file>
     </qresource>
 </RCC>

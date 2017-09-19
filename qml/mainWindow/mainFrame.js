@@ -1,15 +1,27 @@
+function pause() {
+    if(mediaplayer.playbackState === MediaPlayer.PlayingState)
+        mediaplayer.pause()
+    else
+        mediaplayer.play()
+}
+
 function onVideoOutputMouseClick(mouse) {
     if (mouse.button === Qt.LeftButton) {
-        balanceYUV.setResult(mouse.x, mouse.y);
+//        balanceYUV.setResult(mouse.x, mouse.y);
+        pause()
     }
     else if (mouse.button === Qt.RightButton) {
-        balanceYUV.setResult(-1., -1.);
+//        balanceYUV.setResult(-1., -1.);
     }
 }
 
 function onVideoOutputMouseDoubleClick(mouse){
     if (mouse.button === Qt.LeftButton) {
-        root.visibility = root.visibility !== Window.FullScreen ?
-                Window.FullScreen : Window.AutomaticVisibility
+        if (root.visibility !== Window.FullScreen) {
+            root.visibility = Window.FullScreen
+        } else {
+            root.visibility = Window.AutomaticVisibility
+        }
     }
 }
+
