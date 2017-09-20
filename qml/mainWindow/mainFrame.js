@@ -12,6 +12,9 @@ function onVideoOutputMouseClick(mouse) {
     }
     else if (mouse.button === Qt.RightButton) {
 //        balanceYUV.setResult(-1., -1.);
+        recentFilesMenu.x = mouse.x
+        recentFilesMenu.y = mouse.y
+        recentFilesMenu.open()
     }
 }
 
@@ -23,5 +26,11 @@ function onVideoOutputMouseDoubleClick(mouse){
             root.visibility = Window.AutomaticVisibility
         }
     }
+}
+
+function catchVideoError() {
+    var temp = mainFrame.position
+    mediaplayer.play()
+    mediaplayer.seek(temp)
 }
 

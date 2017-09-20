@@ -13,6 +13,18 @@
         <file>qml/views/AppMenu/AppMenu.qml</file>
         <file>qml/views/ColorCorrector/ColorCorrector.qml</file>
         <file>qml/mainWindow/Footer.qml</file>
-        <file>qml/mainWindow/Header.qml</file>
+        <file>images/burger.png</file>
+        <file>images/clearHist.png</file>
+        <file>images/hist.png</file>
+        <file>images/icon.png</file>
+        <file>images/timer.png</file>
+        <file>images/menu.svg</file>
+        <file>images/play-circle.svg</file>
+        <file>images/play-box-outline.svg</file>
+        <file>images/volume-high.svg</file>
+        <file>images/volume-medium.svg</file>
+        <file>images/volume-off.svg</file>
+        <file>qml/mainWindow/footer.js</file>
+        <file>images/pause.svg</file>
     </qresource>
 </RCC>

@@ -6,32 +6,15 @@ import QtQuick.Window 2.3
 import "../views/AppMenu/"
 ApplicationWindow {
     id: root
+    title: "aobPlayer"
     visible: true
     visibility: Window.Windowed
-
-    title: "aobPlayer"
     x: initialX
     y: initialY
     width: initialWidth
     height: initialHeight
     minimumHeight: 280
     minimumWidth: 280
-    Component.onCompleted: {
-        console.log("Loaded")
-    }
-    header: Header {}
-    Menu {
-        id: recentFilesMenu
-        x: root.width
-        MenuItem {
-            text: "Clear menu"
-        }
-        MenuSeparator {
-        }
-        MenuItem {
-            text: "Clear menu"
-        }
-    }
 
     Shortcut {
         sequence: "Ctrl+Q"
@@ -46,5 +29,18 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-    footer: Footer {}
+    footer: Footer {
+        id: footerId
+    }
+    Menu {
+        id: recentFilesMenu
+        MenuItem {
+            text: "Clear menu"
+        }
+        MenuSeparator {
+        }
+        MenuItem {
+            text: "Clear menu"
+        }
+    }
 }

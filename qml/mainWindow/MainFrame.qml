@@ -5,27 +5,25 @@ import QtQuick.Window 2.2
 import QtQuick.Layouts 1.3
 import drewdru.BalanceYUV 1.0
 import "./mainFrame.js" as ThisJs
+
 Item {
     id: mainFrame
+
     property int position: 0
     property int duration: mediaplayer.duration
-    function setPosition(value) {mediaplayer.seek(value)}
-    function pause() {ThisJs.pause()}
+    property int volume: mediaplayer.volume
+    function setPosition(value) { mediaplayer.seek(value) }
+    function pause() { ThisJs.pause() }
+    function setVolume(value) { mediaplayer.volume = value }
+
     MediaPlayer {
         id: mediaplayer
         source: appDir + "/flawless.mp4"
         autoPlay: true
         loops: MediaPlayer.Infinite
-        onError: {
-            var temp = mainFrame.position
-            mediaplayer.play()
-            mediaplayer.seek(temp)
-        }
-        onPositionChanged: {
-            mainFrame.position = mediaplayer.position
-        }
+        onError: ThisJs.catchVideoError()
+        onPositionChanged: { mainFrame.position = position }
     }
-
     VideoOutput {
         id: videoOutput
         x: 0
