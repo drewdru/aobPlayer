@@ -34,3 +34,7 @@ function catchVideoError() {
     mediaplayer.seek(temp)
 }
 
+function isPlayerPaused() {
+    return mediaplayer.playbackState === MediaPlayer.PausedState
+}
+

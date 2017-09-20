@@ -16,3 +16,10 @@ function getVolumIconSource(value) {
     else
         return "qrc:///images/volume-medium.svg"
 }
+
+function getPlayPauseIconSource() {
+    if (mainFrame.isPaused)
+        return "qrc:///images/play-box-outline.svg"
+    else
+        return "qrc:///images/pause.svg"
+}

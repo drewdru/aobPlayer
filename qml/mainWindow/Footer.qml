@@ -8,7 +8,7 @@ ToolBar {
         ToolButton {
             Image {
                 anchors.centerIn: parent
-                source: "qrc:///images/play-box-outline.svg"
+                source: ThisJs.getPlayPauseIconSource()
                 width: parent.width/1.5
                 height: parent.height/1.5
             }

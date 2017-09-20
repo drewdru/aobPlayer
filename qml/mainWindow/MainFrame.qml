@@ -12,6 +12,7 @@ Item {
     property int position: 0
     property int duration: mediaplayer.duration
     property int volume: mediaplayer.volume
+    property bool isPaused: ThisJs.isPlayerPaused()
     function setPosition(value) { mediaplayer.seek(value) }
     function pause() { ThisJs.pause() }
     function setVolume(value) { mediaplayer.volume = value }
