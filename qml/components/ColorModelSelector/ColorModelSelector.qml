@@ -1,19 +1,16 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.1
-import QtQuick.Controls.Material 2.1
 
 ColumnLayout {
     id: colorModelSelector
     property string colorModelTag: "RGB"
     property string channelTag: "RGB"
     property int currentImageChannelIndex: 0
-    // property bool isOriginalImage
     signal updateProcessingImage()
 
     ColumnLayout {
         GroupBox {
-            // anchors.fill: parent
             Layout.fillWidth: true
             title: qsTr("Choose color model")
             ColumnLayout {

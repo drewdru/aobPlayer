@@ -2,16 +2,29 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.1
 
-Slider {    
+RowLayout {
+    id: sliderRow
     property string name
-    
-    id: firstChannelBalance
-    value: 0
-    stepSize: 1.0
-    from: -to
-    Layout.fillWidth: true
-    ToolTip {
-        visible: parent.pressed
-        text: qsTr(name + " is " + parent.valueAt(parent.position).toFixed(1))
+    property double stepSize: 0.1
+    property double to: 1
+    signal positionChanged(double position)
+
+    Label {
+        text: sliderRow.name
+    }
+    Slider {
+        id: channelBalance
+        value: 0
+        stepSize: sliderRow.stepSize
+        from: -sliderRow.to
+        to: sliderRow.to
+        Layout.fillWidth: true
+        ToolTip {
+            parent: channelBalance.handle
+            visible: channelBalance.pressed
+            text: qsTr(sliderRow.name + " is " + channelBalance.valueAt(channelBalance.position).toFixed(1))
+        }
+        onPositionChanged: sliderRow.positionChanged(value)
     }
 }
+

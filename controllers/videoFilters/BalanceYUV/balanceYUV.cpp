@@ -25,7 +25,6 @@ QVideoFrame BalanceYUVRunnable::run(QVideoFrame *input,
 
     if (!input->isValid())
         return *input;
-
     if (!input->map(QAbstractVideoBuffer::ReadOnly)) {
         return *input;
     }
@@ -43,13 +42,12 @@ QVideoFrame BalanceYUVRunnable::run(QVideoFrame *input,
 }
 
 void BalanceYUVRunnable::changeValue(uchar* inputBits, size_t from, size_t to,
-        uchar maxValue, uchar newValueY, bool isRound)
+        uchar maxValue, int value)
 {
     for (int i = from; i < to; i+=1) {
-        float newValue = float(inputBits[i]) + newValueY;
+        float newValue = float(inputBits[i]) + value;
         if (newValue > maxValue) newValue = maxValue;
         if (newValue < 0) newValue = 0;
-        if (isRound) newValue = qRound(newValue/2);
         inputBits[i] = newValue;
     }
 }
@@ -59,34 +57,35 @@ void BalanceYUVRunnable::changeYUV(QVideoFrame *input)
     // Assign 127 to Us and Vs
     int firstU = input->width()*input->height(); // if i correctly understand YUV420
     int lastV = input->mappedBytes();
+    int firstV = qRound((firstU+lastV)/2.);
 
     uchar* inputBits = input->bits();
     switch (this->filter_parent->currentMode) {
     case YUVColorsMode::Y:
         this->changeValue(inputBits, 0, firstU, 255,
-                this->filter_parent->newValueY, false);
+                this->filter_parent->newValueY);
         break;
     case YUVColorsMode::U:
-        this->changeValue(inputBits, firstU, (firstU+lastV)/2, 127,
-                this->filter_parent->newValueU, true);
+        this->changeValue(inputBits, firstU, firstV, 255,
+                this->filter_parent->newValueU);
         break;
     case YUVColorsMode::V:
-        this->changeValue(inputBits, (firstU+lastV)/2, lastV, 127,
-                this->filter_parent->newValueV, true);
+        this->changeValue(inputBits, firstV, lastV, 255,
+                this->filter_parent->newValueV);
         break;
     case YUVColorsMode::UV:
-        this->changeValue(inputBits, firstU, (firstU+lastV)/2, 127,
-                this->filter_parent->newValueU, true);
-        this->changeValue(inputBits, (firstU+lastV)/2, lastV, 127,
-                this->filter_parent->newValueV, true);
+        this->changeValue(inputBits, firstU, firstV, 255,
+                this->filter_parent->newValueU);
+        this->changeValue(inputBits, firstV, lastV, 255,
+                this->filter_parent->newValueV);
         break;
     case YUVColorsMode::YUV:
         this->changeValue(inputBits, 0, firstU, 255,
-                this->filter_parent->newValueY, false);
-        this->changeValue(inputBits, firstU, (firstU+lastV)/2, 127,
-                this->filter_parent->newValueU, true);
-        this->changeValue(inputBits, (firstU+lastV)/2, lastV, 127,
-                this->filter_parent->newValueV, true);
+                this->filter_parent->newValueY);
+        this->changeValue(inputBits, firstU, firstV, 255,
+                this->filter_parent->newValueU);
+        this->changeValue(inputBits, firstV, lastV, 255,
+                this->filter_parent->newValueV);
         break;
     default:
         break;
@@ -98,6 +97,15 @@ BalanceYUV::BalanceYUV(QAbstractVideoFilter *parent) :
     _result(new QPointF(-1.,-1.))
 {
 
+}
+void BalanceYUV::setY(int value) {
+    this->newValueY = value;
+}
+void BalanceYUV::setU(int value) {
+    this->newValueU = value;
+}
+void BalanceYUV::setV(int value) {
+    this->newValueV = value;
 }
 
 QVideoFilterRunnable* BalanceYUV::createFilterRunnable()

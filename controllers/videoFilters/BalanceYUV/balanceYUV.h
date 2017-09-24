@@ -16,7 +16,7 @@ public:
 private:
     void changeYUV(QVideoFrame*);
     void changeValue(uchar*inputBits, size_t from, size_t to,
-            uchar maxValue, uchar newValueY, bool isRound);
+            uchar maxValue, int newValueY);
     BalanceYUV *filter_parent;
 };
 
@@ -28,11 +28,14 @@ public:
     QVideoFilterRunnable* createFilterRunnable();
     QPointF *_result;
     Q_INVOKABLE void setResult(float, float);
+    Q_INVOKABLE void setY(int value);
+    Q_INVOKABLE void setU(int value);
+    Q_INVOKABLE void setV(int value);
 
-    YUVColorsMode currentMode = YUVColorsMode::NONE;
-    char newValueY = 0;
-    uchar newValueU = 127;
-    uchar newValueV = 127;
+    YUVColorsMode currentMode = YUVColorsMode::YUV;
+    int newValueY = 0;
+    int newValueU = 0;
+    int newValueV = 0;
 signals:
     void finished(QPointF result);
 };

@@ -1,12 +1,8 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.1
-import QtQuick.Controls.Material 2.1
 
 Slider {
-    signal updateProcessingImage()
-
-    property bool isOriginalImage
     id: hueSlider
     Layout.fillWidth: true
     from: 0
@@ -14,10 +10,10 @@ Slider {
     to: 360
     stepSize: 1.0
     background: Rectangle {
+        color: "transparent"
         Image {
-            width: parent.width
-            height: parent.height
-            source: appDir + "/images/slider.png"
+            anchors.fill: parent
+            source: "qrc:///images/slider.png"
         }
     }
     handle: Rectangle {

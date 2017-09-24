@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<BalanceYUV>("drewdru.BalanceYUV", 1, 0, "BalanceYUV");
+//    qmlRegisterType<BalanceYUV>("drewdru.BalanceYUV", 1, 0, "BalanceYUV");
 
     QCommandLineParser parser;
     QGuiApplication::setApplicationVersion(QT_VERSION_STR);
@@ -45,6 +45,10 @@ int main(int argc, char *argv[])
                                 geometry.height());
     engine.rootContext()->setContextProperty("appDir",
             "file://" + QGuiApplication::applicationDirPath());
+
+    BalanceYUV balanceYUV;
+    engine.rootContext()->setContextProperty("balanceYUV",
+            &balanceYUV);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/mainWindow/main.qml")));
 

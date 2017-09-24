@@ -3,7 +3,9 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 
-import "../views/AppMenu/"
+import "../drawers/FeatureListDrawer/"
+import "../drawers/MethodsDrawer"
+
 ApplicationWindow {
     id: root
     title: "aobPlayer"
@@ -15,23 +17,25 @@ ApplicationWindow {
     height: initialHeight
     minimumHeight: 280
     minimumWidth: 280
+    footer: Footer {
+        id: footerId
+    }
+    MainShortcuts {}
 
-    Shortcut {
-        sequence: "Ctrl+Q"
-        onActivated: Qt.quit()
-    }
-    Shortcut {
-        sequence: "Space"
-        onActivated: mainFrame.pause()
-    }
     MainFrame {
         id: mainFrame
         anchors.fill: parent
     }
 
-    footer: Footer {
-        id: footerId
+    FeatureListDrawer {
+        id: drawerFeatureList
+        MainShortcuts {}
     }
+    MethodsDrawer {
+        id: methodsDrawer
+        MainShortcuts {}
+    }
+
     Menu {
         id: recentFilesMenu
         MenuItem {

@@ -3,9 +3,8 @@ import QtQuick.Controls 2.0
 import QtMultimedia 5.8
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.3
-import drewdru.BalanceYUV 1.0
 import "./mainFrame.js" as ThisJs
-
+//import drewdru.BalanceYUV 1.0
 Item {
     id: mainFrame
 
@@ -42,10 +41,10 @@ Item {
             onDoubleClicked: ThisJs.onVideoOutputMouseDoubleClick(mouse)
         }
     }
-    BalanceYUV {
-        id: balanceYUV
-        onFinished: {
-//            console.log("finished! " + result.x + " " + result.y);
-        }
-    }
+//    BalanceYUV {
+//        id: balanceYUV
+//        onFinished: {
+////            console.log("finished! " + result.x + " " + result.y);
+//        }
+//    }
 }
